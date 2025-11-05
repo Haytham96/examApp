@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+@utility container {
+  margin-inline: auto;
+}
+
+@layer components {
+  .btn {
+    @apply bg-blue-600 border border-blue-500 text-white py-2 mt-2 w-full cursor-pointer;
+  }
+  .main-input {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+  }
+  .main-label {
+    @apply block mb-2 text-2xl font-medium text-gray-900 dark:text-white;
+  }
+}
+
+/* :root {
+  --main-color: #155dfc;
+} */
+
+body {
+  font-family: "Sansita", sans-serif;
+}
+
+/* .btn-main {
+  background-color: var(--main-color);
+  padding: 7px 20px;
+  border: 1px solid#ccc;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.5;
+}
+
+.btn-main:disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+} */
