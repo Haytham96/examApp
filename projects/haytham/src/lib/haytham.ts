@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'lib-auth',
+  selector: 'lib-haytham',
   imports: [],
   template: `
     <p>
-      auth works!
+      haytham works!
     </p>
   `,
   styles: ``,
 })
-export class Auth {
+export class Haytham {
 
 }

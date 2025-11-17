@@ -3,10 +3,11 @@ import { AuthLayoutComponent } from '../../layouts/auth-layout/auth-layout.compo
 
 export const AUTH_ROUTES: Routes = [
   {
-    path: 'login',
+    path: '',
     component: AuthLayoutComponent,
     children: [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
+
       {
         path: 'login',
         loadComponent: () =>
@@ -21,22 +22,7 @@ export const AUTH_ROUTES: Routes = [
           ),
         title: 'CreateAccount',
       },
-      {
-        path: 'verifyotp',
-        loadComponent: () =>
-          import('./pages/verify-otp/verify-otp.component').then(
-            (c) => c.VerifyOtpComponent
-          ),
-        title: 'VerifyOtp',
-      },
-      {
-        path: 'newpassword',
-        loadComponent: () =>
-          import('./pages/new-password/new-password.component').then(
-            (c) => c.NewPasswordComponent
-          ),
-        title: 'NewPassword',
-      },
+
       {
         path: 'forgotpassword',
         loadComponent: () =>

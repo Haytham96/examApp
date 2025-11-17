@@ -6,6 +6,9 @@
     "paths": {
       "auth": [
         "./dist/auth"
+      ],
+      "haytham": [
+        "./dist/haytham"
       ]
     },
     "strict": true,
@@ -40,6 +43,12 @@
     },
     {
       "path": "./projects/auth/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/haytham/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/haytham/tsconfig.spec.json"
     }
   ]
 }

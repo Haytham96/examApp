@@ -7,34 +7,42 @@
   <div
     class="col-span-6 rounded p-4 mx-auto h-screen w-full flex items-center justify-center bg-white"
   >
-    <form class="w-[80%]">
+    <form [formGroup]="loginForm" (ngSubmit)="getValuesLogin()" class="w-[80%]">
       <h2 class="mb-8 font-light text-4xl">Login</h2>
+      <app-input
+        [control]="loginForm.get('email')"
+        [typeInput]="'email'"
+        [idInput]="'email'"
+        [labelInput]="'Email'"
+        [placeholderInput]="'user@example.com'"
+      ></app-input>
       <div class="relative my-3">
-        <label for="email" class="main-label">Email</label>
-        <input
-          type="email"
-          id="email"
-          class="main-input"
-          placeholder="name@flowbite.com"
-          required
-        />
+        <app-input
+          [control]="loginForm.get('password')"
+          [typeInput]="'password'"
+          [idInput]="'password'"
+          [labelInput]="'Password'"
+          [placeholderInput]="'.......'"
+        ></app-input>
       </div>
-      <div class="relative my-3">
-        <label for="email" class="main-label">Password</label>
-        <input
-          type="password"
-          id="password"
-          class="main-input"
-          placeholder=""
-          required
-        />
-      </div>
-      <h3 class="text-end text-blue-600 font-sans">Forgot youI password?</h3>
+      <a routerLink="/forgotpassword">
+        <h3
+          class="text-end cursor-pointer text-blue-800 font-sans hover:text-blue-600"
+        >
+          Forgot youI password?
+        </h3>
+      </a>
 
       <button class="btn my-6">Login</button>
       <div class="flex items-center space-x-1 justify-center font-sans">
         <span>Don t have an account?</span>
-        <span class="text-blue-800 cursor-pointer font-bold">Create yours</span>
+        <a routerLink="/createaccount">
+          <span
+            class="text-blue-600 cursor-pointer font-bold hover:text-blue-900"
+          >
+            Create yours</span
+          >
+        </a>
       </div>
     </form>
   </div>

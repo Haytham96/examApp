@@ -37,7 +37,9 @@
                 "input": "public"
               }
             ],
+
             "styles": [
+              "./node_modules/intl-tel-input/build/css/intlTelInput.css",
               "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/styles.css"
             ]
@@ -86,12 +88,7 @@
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
+
             "styles": ["src/styles.css"]
           }
         }
@@ -119,10 +116,34 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "projects/auth/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        }
+      }
+    },
+    "haytham": {
+      "projectType": "library",
+      "root": "projects/haytham",
+      "sourceRoot": "projects/haytham/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/haytham/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/haytham/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/haytham/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
           }
         }
       }
