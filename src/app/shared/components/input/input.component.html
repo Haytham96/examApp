@@ -1,0 +1,69 @@
+<div class="">
+  <div class="">
+    <label
+      [class]="{
+        'text-green-800': control?.valid,
+        'text-red-800': control?.invalid && control?.touched
+      }"
+      [for]="idInput"
+      class="main-label"
+    >
+      {{ labelInput }}
+    </label>
+
+    <div class="main-input flex items-center gap-2 bg-white">
+      @if (typeInput==='tel') {
+      <div class="absolute">
+        <img
+          src="https://flagcdn.com/16x12/eg.png"
+          width="18"
+          height="14"
+          alt="asss"
+        />
+      </div>
+      }
+      <ng-content select="[prefix]"></ng-content>
+
+      <input
+        [class]="{
+          'border-green-800': control?.valid,
+          'border-red-800': control?.invalid && control?.touched
+        }"
+        [formControl]="control"
+        [type]="typeInput"
+        [id]="idInput"
+        class="flex-1 border-0 outline-none bg-white"
+        [placeholder]="placeholderInput"
+      />
+    </div>
+  </div>
+
+  @if (control?.errors&&control?.touched&&!control?.getError('mismatch')) {
+  <div class="text-red-400 bg-red-100 border border-red-400 p-1 relative">
+    <ul class="list-disc pl-5">
+      @if (control?.getError('required')) {
+      <li>Input is required</li>
+      } @if (control?.getError('minlength')) {
+      <li>Input must be at least 3 characters long.</li>
+      } @if (control?.getError('maxlength')) {
+      <li>Input must not exceed 15 characters.</li>
+      } @if (control?.getError('email')) {
+      <li>Please enter a Valid Email address.</li>
+      } @if (control?.getError('pattern')) {
+      <li>match the pattern...(Elevate@123..)</li>
+      } @if (control?.getError('mismatch')&&control?.get('rePassword')?.touched)
+      {
+
+      <li>Password do not match</li>
+
+      }
+    </ul>
+  </div>
+  } @if (control?.getError('mismatch')&&control?.get('rePassword')?.touched) {
+  <div class="text-red-400 bg-red-100 my-3 border border-red-400 p-4 relative">
+    <ul class="list-disc pl-5">
+      <li>Password do not match</li>
+    </ul>
+  </div>
+  }
+</div>

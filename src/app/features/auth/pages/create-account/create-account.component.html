@@ -1,92 +1,110 @@
 <section class="grid lg:grid-cols-12 h-screen mx-auto">
-  <div class="col-span-6 bg-gray-200 h-screen">
+  <div class="col-span-6 h-screen">
     <feature-list featureList="feature-list"></feature-list>
   </div>
 
   <!-- Login -->
   <div
-    class="col-span-6 rounded p-4 mx-auto h-screen w-full flex items-center justify-center bg-white"
+    class="col-span-6 min-h-screen rounded mx-auto w-full flex items-center justify-center box-content"
   >
-    <form class="w-[80%] p-8">
-      <h2 class="mb-3 font-light text-4xl">Create Account</h2>
-      <div class="flex w-full space-x-2">
-        <div class="relative my-3 w-1/2">
-          <label for="" class="main-label">First name</label>
-          <input
-            type="text"
-            id=""
-            class="main-input"
-            placeholder="Ahmed"
-            required
-          />
+    <form
+      [formGroup]="authForm"
+      (ngSubmit)="submitFormAccount()"
+      class="w-[80%] box-border"
+    >
+      <h2 class="mb-3 font-light text-4xl">Create Account.</h2>
+
+      <div class="grid lg:grid-cols-12 w-full space-x-2">
+        <div class="col-span-6 relative my-3">
+          <app-input
+            [control]="authForm.get('firstName')"
+            [typeInput]="'text'"
+            [idInput]="'firstName'"
+            [labelInput]="'FirstName'"
+            [placeholderInput]="'Ahmed'"
+          ></app-input>
         </div>
-        <div class="relative my-3 w-1/2">
-          <label for="" class="main-label">Last name</label>
-          <input
-            type="text"
-            id=""
-            class="main-input"
-            placeholder="Abdullah"
-            required
-          />
+        <div class="col-span-6 relative my-3">
+          <div>
+            <app-input
+              [control]="authForm.get('lastName')"
+              [typeInput]="'text'"
+              [idInput]="'lastName'"
+              [labelInput]="'LastName'"
+              [placeholderInput]="'Abdullah'"
+            ></app-input>
+          </div>
         </div>
       </div>
-      <div class="relative my-3">
-        <label for="" class="main-label">Username</label>
-        <input
-          type="text"
-          id=""
-          class="main-input"
-          placeholder="user123"
-          required
-        />
+      <div class="relative">
+        <app-input
+          [control]="authForm.get('username')"
+          [typeInput]="'text'"
+          [idInput]="'username'"
+          [labelInput]="'UserName'"
+          [placeholderInput]="'user.'"
+        ></app-input>
       </div>
-      <div class="relative my-3">
-        <label for="" class="main-label">Email</label>
-        <input
-          type="email"
-          id=""
-          class="main-input"
-          placeholder="user@example.com"
-          required
-        />
-      </div>
-      <div class="relative my-3">
-        <label for="" class="main-label">Phone</label>
-        <input
-          type="tel"
-          id=""
-          class="main-input"
-          placeholder="EG(+20) 1012345678"
-          required
-        />
-      </div>
-      <div class="relative my-3">
-        <label for="email" class="main-label">Password</label>
-        <input
-          type="password"
-          id=""
-          class="main-input"
-          placeholder=""
-          required
-        />
-      </div>
-      <div class="relative my-3">
-        <label for="email" class="main-label">Cionfirm Password</label>
-        <input
-          type="password"
-          id=""
-          class="main-input"
-          placeholder=""
-          required
-        />
+      <div class="relative">
+        <app-input
+          [control]="authForm.get('email')"
+          [typeInput]="'email'"
+          [idInput]="'email'"
+          [labelInput]="'Email'"
+          [placeholderInput]="'user@example.com'"
+        ></app-input>
       </div>
 
-      <button class="btn my-6 font-mono">create Account</button>
+      <div class="relative">
+        <app-input
+          [control]="authForm.get('password')"
+          [typeInput]="'password'"
+          [idInput]="'password'"
+          [labelInput]="'Password'"
+          [placeholderInput]="'.......'"
+        ></app-input>
+      </div>
+      <div class="relative">
+        <app-input
+          [control]="authForm.get('rePassword')"
+          [typeInput]="'password'"
+          [idInput]="'rePassword'"
+          [labelInput]="'Confirm Password'"
+          [placeholderInput]="'.......'"
+        ></app-input>
+      </div>
+      <div class="relative">
+        <app-input
+          [control]="authForm.get('phone')"
+          [typeInput]="'tel'"
+          [idInput]="'phone'"
+          [labelInput]="'Phone'"
+          [placeholderInput]="'1012345678'"
+        >
+          <div prefix class="flex items-center gap-2">
+            <span>EG (+20)</span>
+          </div>
+        </app-input>
+      </div>
+
+      <button class="btn my-6 font-mono">
+        create Account @if (isLoading) {
+        <span> <i class="fas fa-spinner animate-spin"></i> </span>
+        }
+      </button>
+
       <div class="flex items-center space-x-1 justify-center font-sans">
         <span>Already have an account?</span>
-        <span class="text-blue-800 cursor-pointer font-bold">Login</span>
+        <a routerLink="/login">
+          <span
+            class="text-blue-600 cursor-pointer font-bold hover:text-blue-900"
+            >Login</span
+          >
+        </a>
       </div>
+      @if (msgError) {
+      <p class="text-center text-red-900 bg-red-300">{{ msgError }}</p>
+      }
     </form>
   </div>
 </section>

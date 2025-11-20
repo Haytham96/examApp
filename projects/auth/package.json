@@ -1,0 +1,13 @@
+{
+  "name": "auth-haytham",
+  "version": "0.0.4",
+  "peerDependencies": {
+    "@angular/common": "^20.3.0",
+    "@angular/core": "^20.3.0"
+  },
+  "dependencies": {
+    "auth-haytham": "^0.0.4",
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
